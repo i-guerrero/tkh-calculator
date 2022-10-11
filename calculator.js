@@ -6,26 +6,26 @@ function add(a, b) {
 }
 
 function subtract(a, b) {
-  return a - b;
+  return Number(a) - Number(b);
 }
 
 function multiply(a, b) {
-  return a * b;
+  return Number(a) * Number(b);
 }
 
 function divide(a, b) {
-  return a / b;
+  return Number(a) / Number(b);
 }
 
 function operate(operator, a, b) {
   let result;
-  if (operator === "+") {
+  if (operator === "+" || operator.toLowerCase() === "add") {
     result = add(a, b);
-  } else if (operator === "-") {
+  } else if (operator === "-" || operator.toLowerCase() === "subtract") {
     result = subtract(a, b);
-  } else if (operator === "*") {
+  } else if (operator === "*" || operator.toLowerCase() === "multiply") {
     result = multiply(a, b);
-  } else if (operator === "/") {
+  } else if (operator === "/" || operator.toLowerCase() === "divide") {
     result = divide(a, b);
   }
   console.log(result);
@@ -72,6 +72,13 @@ document.querySelector("#equals").addEventListener("click", () => {
     // console.log(result);
   }
   console.log(result);
+  values = [];
+  operations = [];
+});
+
+// Clear
+document.querySelector("#clear").addEventListener("click", () => {
+  display.value = "";
   values = [];
   operations = [];
 });
