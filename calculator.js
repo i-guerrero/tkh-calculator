@@ -14,6 +14,10 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+  if (b === 0) {
+    throw "You cannot divide by 0";
+    return;
+  }
   return Number(a) / Number(b);
 }
 
@@ -27,6 +31,8 @@ function operate(operator, a, b) {
     result = multiply(a, b);
   } else if (operator === "/" || operator.toLowerCase() === "divide") {
     result = divide(a, b);
+  } else {
+    return "error operator not recognized";
   }
   console.log(result);
   return result;
@@ -67,7 +73,7 @@ document.querySelector("#equals").addEventListener("click", () => {
   for (let i = 0; i < values.length - 1; i++) {
     result = operate(operations[i], result, values[i + 1]);
     // display result after each iteration
-    display.value = result;
+    display.value = result % 1 === 0 ? result : result.toFixed(3);
     // result += operate(operations[i], values[i], values[i + 1]);
     // console.log(result);
   }
